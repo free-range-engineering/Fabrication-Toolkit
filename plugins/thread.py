@@ -123,7 +123,11 @@ class ProcessThread(Thread):
 
         # make output dir
         filename = os.path.splitext(os.path.basename(self.process_manager.board.GetFileName()))[0]
-        output_path = os.path.join(project_directory, outputFolder)
+        output_path = os.path.join(project_directory, self.options[OUTPUT_PATH_OPT])
+        if os.path.isabs(self.options[OUTPUT_PATH_OPT]):
+            output_path = self.options[OUTPUT_PATH_OPT]
+            
+        
         if not os.path.exists(output_path):
             os.makedirs(output_path)
         

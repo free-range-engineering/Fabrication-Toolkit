@@ -197,6 +197,7 @@ options:
   --excludeDNP, -e                          Exclude DNP components from BOM
   --allActiveLayers, -aaL                   Export all active layers instead of only commonly used ones
   --openBrowser, -b                         Open web browser with directory file overview after generation
+  --outputPath OUTPUTPATH, -o               Path to the output folder
 ```
 
 
