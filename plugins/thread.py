@@ -137,7 +137,8 @@ class ProcessThread(Thread):
 
         timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
         backup_name = ProcessManager.normalize_filename("_".join(("{} {} {}".format(title or filename, revision or '', timestamp).strip()).split()))
-        shutil.make_archive(os.path.join(output_path, 'backups', backup_name), 'zip', temp_dir)
+        if self.options[CREATE_BACKUP]:
+            shutil.make_archive(os.path.join(output_path, 'backups', backup_name), 'zip', temp_dir)
 
 
         # copy to & open output dir

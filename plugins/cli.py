@@ -17,7 +17,9 @@ if __name__ == '__main__':
     parser.add_argument("--excludeDNP",         "-e",  action="store_true", help="Exclude DNP components from BOM")
     parser.add_argument("--allActiveLayers",    "-aaL",action="store_true", help="Export all active layers instead of only commonly used ones")
     parser.add_argument("--openBrowser",        "-b",  action="store_true", help="Open webbrowser with directory file overview after generation")
-    parser.add_argument("--outputPath",          "-o",  type=str, help="Path to the output folder")
+    parser.add_argument("--outputPath",         "-o",  type=str, help="Path to the output folder")
+    parser.add_argument("--createBackup",       "-cb",  action="store_true",default=False, help="Path to the output folder")
+    
     args = parser.parse_args()
 
     options = dict()
@@ -29,6 +31,8 @@ if __name__ == '__main__':
     options[ALL_ACTIVE_LAYERS_OPT] = args.allActiveLayers
     options[EXTRA_LAYERS] = args.additionalLayers
     options[OUTPUT_PATH_OPT] = args.outputPath if args.outputPath else OUTPUT_PATH_OPT
+    options[CREATE_BACKUP] = args.createBackup
+    
 
     openBrowser = args.openBrowser
 
@@ -36,3 +40,4 @@ if __name__ == '__main__':
     path = args.path
 
     ProcessThread(wx=None, cli=path, options=options, openBrowser=openBrowser)
+    
